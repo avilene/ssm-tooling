@@ -16,7 +16,8 @@ function argumentOptionsParser(rawArguments) {
 
 async function inquireUndeclaredItems(opts) {
   if (!opts.search) {
-    console.error(
+    console.log(
+      "\x1b[31m%s\x1b[0m",
       "Please provide a string to search on. Example: ssm test-param"
     );
     return;

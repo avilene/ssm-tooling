@@ -64,7 +64,7 @@ async function inquireUndeclaredItems(opts) {
       const userInput = await inquirer.prompt(displayOptions);
       console.log("\x1b[33m%s\x1b[0m", `💬 Finding ${userInput.template}...`);
       exec(
-        `aws ssm get-parameter --with-decryption --name ${userInput.template} | jq '.Parameter'  | jq -r '.Value' | pbcopy`,
+        `aws ssm get-parameter --with-decryption --name ${userInput.template} | jq '.Parameter'  | jq -r '.Value' | tr -d '\n' | pbcopy`,
         (error, stdout, stderr) => {
           if (error) {
             console.log("\x1b[31m%s\x1b[0m", `error: ${error.message}`);
